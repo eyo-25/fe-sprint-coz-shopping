@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <HeaderSection>
+    <HeaderContainer>
       <HeaderWrapper>
         <LogoContainer>
           <Link to="/">
@@ -28,13 +28,13 @@ function Header() {
           )}
         </HamMenuContainer>
       </HeaderWrapper>
-    </HeaderSection>
+    </HeaderContainer>
   );
 }
 
 export default Header;
 
-const HeaderSection = styled.section`
+const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   height: 80px;
