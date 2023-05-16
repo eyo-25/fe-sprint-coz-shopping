@@ -20,16 +20,17 @@ export const ProcductImg = styled.div`
     position: absolute;
     right: 12px;
     bottom: 12px;
+    &:hover {
+      path {
+        fill: #ffd361;
+      }
+    }
   }
 `;
 export const Image = styled.img<{ src: string }>`
   width: 100%;
   height: 100%;
   background: url(${(props) => props.src}) 100% / cover no-repeat;
-  transition: linear 0.8s;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 export const RightAlignText = styled.p`
   text-align: right;
@@ -45,6 +46,12 @@ export const ProductInfo = styled.div`
   div {
     display: flex;
     justify-content: space-between;
+  }
+  strong,
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 export const ProductTitle = styled.div`

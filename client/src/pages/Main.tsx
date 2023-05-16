@@ -1,7 +1,8 @@
 import Header from "component/Header/Header";
 import styled from "styled-components";
-import Card from "component/Cards/Card";
 import { useSelector } from "react-redux";
+import Card from "component/Cards/Card";
+import { ICardType } from "component/Cards/Card.types";
 
 function Main() {
   const offset = 4;
@@ -13,9 +14,10 @@ function Main() {
     <>
       <Header />
       <MainContainer>
-        {products && 0 < products.length
-          ? products.map((el: any) => <Card key={el.id} product={el} />)
-          : null}
+        {0 < products.length &&
+          products.map((product: ICardType) => (
+            <Card key={product.id} product={product} />
+          ))}
       </MainContainer>
     </>
   );
