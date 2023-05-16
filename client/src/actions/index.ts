@@ -1,6 +1,6 @@
 export const LOAD_BOOKMARK = "LOAD_BOOKMARK";
 export const ADD_TO_BOOKMARK = "ADD_TO_BOOKMARK";
-export const REMOVE_FROM_Bookmark = "REMOVE_FROM_Bookmark";
+export const REMOVE_FROM_BOOKMARK = "REMOVE_FROM_BOOKMARK";
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 
 export const loadBookmark = (bookmarkData: number[]) => {
@@ -21,7 +21,7 @@ export const addToBookmark = (itemId: number) => {
 
 export const removeFromBookmark = (itemId: number) => {
   return {
-    type: REMOVE_FROM_Bookmark,
+    type: REMOVE_FROM_BOOKMARK,
     payload: {
       itemId,
     },
