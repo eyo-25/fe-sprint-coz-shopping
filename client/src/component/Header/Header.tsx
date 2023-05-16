@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <HeaderSection>
+    <HeaderContainer>
       <HeaderWrapper>
         <LogoContainer>
           <Link to="/">
@@ -28,17 +28,18 @@ function Header() {
           )}
         </HamMenuContainer>
       </HeaderWrapper>
-    </HeaderSection>
+    </HeaderContainer>
   );
 }
 
 export default Header;
 
-const HeaderSection = styled.section`
+const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   height: 80px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
+  z-index: 999;
 `;
 const HeaderWrapper = styled.div`
   display: flex;
