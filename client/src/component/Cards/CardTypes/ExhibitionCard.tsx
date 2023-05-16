@@ -8,17 +8,21 @@ import {
 } from "../Card.Style";
 import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
 import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
-import { addBookmark } from "utils/useBookMark";
 
-export function ExhibitionCard({ productObj, isBookmark }: IExhibitionCard) {
+export function ExhibitionCard({
+  productObj,
+  isBookmark,
+  handleRemoveBookmark,
+  handleAddBookmark,
+}: IExhibitionCard) {
   const { title, sub_title, image_url, id } = productObj;
   return (
     <CardContainer>
       <ProcductImg>
         {isBookmark ? (
-          <BookmarkOn />
+          <BookmarkOn onClick={() => handleRemoveBookmark(id)} />
         ) : (
-          <BookmarkOff onClick={() => addBookmark(id)} />
+          <BookmarkOff onClick={() => handleAddBookmark(id)} />
         )}
         <Image src={image_url} alt={"전시회 사진"} />
       </ProcductImg>

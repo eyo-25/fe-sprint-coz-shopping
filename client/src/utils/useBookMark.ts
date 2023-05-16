@@ -1,14 +1,16 @@
+export function setBookmarks(bookmarks: number[]) {
+  const bookmarksJSON = JSON.stringify(bookmarks);
+  localStorage.setItem("bookmarks", bookmarksJSON);
+}
+
 export function getBookmarks(): number[] {
   const bookmarksJSON = localStorage.getItem("bookmarks");
   if (bookmarksJSON) {
     return JSON.parse(bookmarksJSON);
+  } else {
+    setBookmarks([]);
+    return [];
   }
-  return [];
-}
-
-export function setBookmarks(bookmarks: number[]) {
-  const bookmarksJSON = JSON.stringify(bookmarks);
-  localStorage.setItem("bookmarks", bookmarksJSON);
 }
 
 export function addBookmark(id: number) {

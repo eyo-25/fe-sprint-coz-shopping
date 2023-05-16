@@ -15,6 +15,7 @@ export const ProcductImg = styled.div`
   overflow: hidden;
   cursor: pointer;
   svg {
+    cursor: pointer;
     z-index: 10;
     position: absolute;
     right: 12px;
@@ -24,7 +25,7 @@ export const ProcductImg = styled.div`
 export const Image = styled.img<{ src: string }>`
   width: 100%;
   height: 100%;
-  background: url(${(props) => props.src}) 65% / cover no-repeat;
+  background: url(${(props) => props.src}) 100% / cover no-repeat;
   transition: linear 0.8s;
   &:hover {
     transform: scale(1.1);

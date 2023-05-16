@@ -14,6 +14,8 @@ export interface IProductObj {
 export interface IProductCard {
   productObj: IProductObj;
   isBookmark: boolean;
+  handleAddBookmark: (itemId: number) => void;
+  handleRemoveBookmark: (itemId: number) => void;
 }
 
 export interface ICategoryObj {
@@ -32,6 +34,8 @@ export interface ICategoryObj {
 export interface ICategoryCard {
   productObj: ICategoryObj;
   isBookmark: boolean;
+  handleAddBookmark: (itemId: number) => void;
+  handleRemoveBookmark: (itemId: number) => void;
 }
 
 export interface IExhibitionObj {
@@ -50,6 +54,8 @@ export interface IExhibitionObj {
 export interface IExhibitionCard {
   productObj: IExhibitionObj;
   isBookmark: boolean;
+  handleAddBookmark: (itemId: number) => void;
+  handleRemoveBookmark: (itemId: number) => void;
 }
 
 export interface IBrandObj {
@@ -68,4 +74,6 @@ export interface IBrandObj {
 export interface IBrandCard {
   productObj: IBrandObj;
   isBookmark: boolean;
+  handleRemoveBookmark: (itemId: number) => void;
+  handleAddBookmark: (itemId: number) => void;
 }
