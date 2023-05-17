@@ -9,16 +9,12 @@ function Productlist() {
   const [selectedType, setSelectedType] = useState("Total");
 
   const bookmarkList = useSelector((state: any) => {
-    const filteredList = state.productReducer.filter((product: IProduct) => {
-      if (selectedType === "Total") {
-        return state.bookmarkReducer.includes(product.id);
-      }
+    const bookmarkSet = new Set(state.bookmarkReducer);
 
-      return (
-        state.bookmarkReducer.includes(product.id) &&
-        product.type === selectedType
-      );
-    });
+    const filteredList = state.productReducer.filter(
+      (product: IProduct) =>
+        bookmarkSet.has(product.id) && product.type === selectedType
+    );
     return filteredList;
   });
 

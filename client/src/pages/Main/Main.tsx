@@ -9,9 +9,12 @@ function Main() {
   const productList = useSelector((state: any) =>
     state.productReducer.slice(0, offset)
   );
+
   const bookmarkList = useSelector((state: any) => {
+    const bookmarkSet = new Set(state.bookmarkReducer);
+
     const filteredList = state.productReducer.filter((product: IProduct) =>
-      state.bookmarkReducer.includes(product.id)
+      bookmarkSet.has(product.id)
     );
     return filteredList.slice(0, offset);
   });
