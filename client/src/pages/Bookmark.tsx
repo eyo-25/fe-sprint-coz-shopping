@@ -1,5 +1,7 @@
+import AppLayout from "component/AppLayout";
+
 function Bookmark() {
-  return <div>Bookmark</div>;
+  return <AppLayout>Bookmark</AppLayout>;
 }
 
 export default Bookmark;

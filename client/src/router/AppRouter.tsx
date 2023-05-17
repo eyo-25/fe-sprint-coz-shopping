@@ -1,5 +1,5 @@
 import Bookmark from "pages/Bookmark";
-import Main from "pages/Main";
+import Main from "pages/Main/Main";
 import Productlist from "pages/Productlist";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

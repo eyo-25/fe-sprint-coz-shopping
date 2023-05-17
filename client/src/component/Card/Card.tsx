@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
 import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
 import { useDispatch } from "react-redux";
-import { addToBookmark, removeFromBookmark } from "actions";
+import { addToBookmark, removeFromBookmark } from "redux/actions";
 import {
   CardContainer,
   Image,
@@ -12,9 +12,9 @@ import {
   PurpleText,
   RightAlignText,
 } from "./Card.Style";
-import { ICardType } from "./Card.types";
+import { IProduct } from "types/Product.types";
 
-function Card({ product }: { product: ICardType }) {
+function Card({ product }: { product: IProduct }) {
   const {
     type,
     id,
@@ -57,7 +57,6 @@ function Card({ product }: { product: ICardType }) {
     }
   };
 
-  console.log(product);
   return (
     <CardContainer>
       <ProcductImg>

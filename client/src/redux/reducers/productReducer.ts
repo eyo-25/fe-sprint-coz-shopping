@@ -1,4 +1,4 @@
-import { LOAD_PRODUCTS } from "actions";
+import { LOAD_PRODUCTS } from "redux/actions";
 
 const productReducer = (state: any = [], action: any) => {
   switch (action.type) {
