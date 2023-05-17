@@ -11,10 +11,12 @@ function Productlist() {
   const bookmarkList = useSelector((state: any) => {
     const bookmarkSet = new Set(state.bookmarkReducer);
 
-    const filteredList = state.productReducer.filter(
-      (product: IProduct) =>
-        bookmarkSet.has(product.id) && product.type === selectedType
-    );
+    const filteredList = state.productReducer.filter((product: IProduct) => {
+      if (selectedType === "Total") {
+        return bookmarkSet.has(product.id);
+      }
+      return bookmarkSet.has(product.id) && product.type === selectedType;
+    });
     return filteredList;
   });
 
