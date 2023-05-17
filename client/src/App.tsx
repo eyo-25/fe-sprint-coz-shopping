@@ -1,4 +1,4 @@
-import { loadBookmark, loadProducts } from "actions";
+import { loadBookmark, loadProducts } from "redux/actions";
 import AppRouter from "./router/AppRouter";
 import { fetchProducts } from "api/api";
 import { useDispatch } from "react-redux";

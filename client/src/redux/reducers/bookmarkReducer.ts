@@ -1,4 +1,8 @@
-import { ADD_TO_BOOKMARK, LOAD_BOOKMARK, REMOVE_FROM_BOOKMARK } from "actions";
+import {
+  ADD_TO_BOOKMARK,
+  LOAD_BOOKMARK,
+  REMOVE_FROM_BOOKMARK,
+} from "redux/actions";
 import { addBookmark, removeBookmark } from "utils/useBookMark";
 
 const initialState: number[] = [];

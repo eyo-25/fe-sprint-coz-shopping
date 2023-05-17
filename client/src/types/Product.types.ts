@@ -1,4 +1,4 @@
-export interface ICardType {
+export interface IProduct {
   id: number;
   type: "Product" | "Brand" | "Exhibition" | "Category";
   title: string | null;

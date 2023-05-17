@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 264px;
-  margin-right: 30px;
 `;
 export const ProcductImg = styled.div`
   position: relative;

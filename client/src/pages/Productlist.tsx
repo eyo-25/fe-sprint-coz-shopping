@@ -1,5 +1,7 @@
+import AppLayout from "component/AppLayout";
+
 function Productlist() {
-  return <div>Productlist</div>;
+  return <AppLayout>Productlist</AppLayout>;
 }
 
 export default Productlist;

@@ -38,6 +38,7 @@ const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   height: 80px;
+  background-color: white;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
   z-index: 999;
 `;
