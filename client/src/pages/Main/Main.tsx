@@ -31,10 +31,12 @@ function Main() {
           <h4>상품 리스트</h4>
           {0 < productList.length && <CardListRender products={productList} />}
         </ListSection>
-        <ListSection>
-          <h4>북마크 리스트</h4>
-          {0 < productList.length && <CardListRender products={bookmarkList} />}
-        </ListSection>
+        {0 < bookmarkList.length && (
+          <ListSection>
+            <h4>북마크 리스트</h4>
+            <CardListRender products={bookmarkList} />
+          </ListSection>
+        )}
       </MainContainer>
     </AppLayout>
   );
