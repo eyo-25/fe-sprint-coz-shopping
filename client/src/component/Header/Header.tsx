@@ -21,8 +21,8 @@ function Header() {
             <LogoImg />
           </Link>
         </LogoContainer>
-        <HamMenuContainer ref={hamMenuRef}>
-          <HamIcon onClick={onMenuClickHandler} />
+        <HamMenuContainer ref={hamMenuRef} onClick={onMenuClickHandler}>
+          <HamIcon />
           {hamMenuOpen && (
             <HamMenu hamMenuRef={hamMenuRef} setHamMenuOpen={setHamMenuOpen} />
           )}

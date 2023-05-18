@@ -22,6 +22,7 @@ const CardListContainer = styled.ul`
   grid-gap: 24px;
   justify-items: center;
   margin: 0 auto;
+  width: 100%;
 `;
 const CardList = styled.li`
   width: 100%;

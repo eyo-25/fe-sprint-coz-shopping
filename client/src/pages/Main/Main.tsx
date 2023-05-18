@@ -12,19 +12,14 @@ function Main() {
   const productList = useSelector((state: any) =>
     state.productReducer.slice(0, offset)
   );
+
   const bookmarkList = useSelector((state: any) => {
-    const filteredList = [];
-    for (let i = 0; i < offset; i++) {
-      if (state.bookmarkReducer[i]) {
-        const index = state.productReducer.findIndex(
-          (product: IProduct) => product.id === state.bookmarkReducer[i]
-        );
-        filteredList.push(state.productReducer[index]);
-      } else {
-        break;
-      }
-    }
-    return filteredList;
+    const bookmarkSet = new Set(state.bookmarkReducer);
+
+    const filteredList = state.productReducer.filter((product: IProduct) =>
+      bookmarkSet.has(product.id)
+    );
+    return filteredList.slice(0, offset);
   });
 
   return (
@@ -58,6 +53,10 @@ const MainContainer = styled.main`
   margin: 0 auto;
 `;
 const ListSection = styled.section`
+  margin-bottom: 34px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   h4 {
     font-size: 24px;
     font-weight: 900;
