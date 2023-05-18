@@ -9,14 +9,16 @@ function Productlist() {
   const [selectedType, setSelectedType] = useState("Total");
 
   const bookmarkList = useSelector((state: any) => {
-    const bookmarkSet = new Set(state.bookmarkReducer);
+    const bookmarkSet = new Set(state.bookmarkReducer.bookmarks);
 
-    const filteredList = state.productReducer.filter((product: IProduct) => {
-      if (selectedType === "Total") {
-        return bookmarkSet.has(product.id);
+    const filteredList = state.productReducer.products.filter(
+      (product: IProduct) => {
+        if (selectedType === "Total") {
+          return bookmarkSet.has(product.id);
+        }
+        return bookmarkSet.has(product.id) && product.type === selectedType;
       }
-      return bookmarkSet.has(product.id) && product.type === selectedType;
-    });
+    );
     return filteredList;
   });
 

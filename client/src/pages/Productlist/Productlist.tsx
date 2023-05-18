@@ -9,8 +9,8 @@ function Productlist() {
   const [selectedType, setSelectedType] = useState("Total");
 
   const productList = useSelector((state: any) => {
-    if (selectedType === "Total") return state.productReducer;
-    return state.productReducer.filter(
+    if (selectedType === "Total") return state.productReducer.products;
+    return state.productReducer.products.filter(
       (product: IProduct) => product.type === selectedType
     );
   });

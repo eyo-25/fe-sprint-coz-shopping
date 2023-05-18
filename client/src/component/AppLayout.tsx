@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import styled from "styled-components";
+import NotificationBoard from "./NotificationBoard";
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ function AppLayout({ children }: AppLayoutProps) {
     <>
       <Header />
       <MainContainer>{children}</MainContainer>
+      <NotificationBoard />
       <Footer />
     </>
   );

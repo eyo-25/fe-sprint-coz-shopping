@@ -7,14 +7,15 @@ import { IProduct } from "types/Product.types";
 function Main() {
   const offset = 4;
   const productList = useSelector((state: any) =>
-    state.productReducer.slice(0, offset)
+    state.productReducer.products.slice(0, offset)
   );
 
   const bookmarkList = useSelector((state: any) => {
-    const bookmarkSet = new Set(state.bookmarkReducer);
+    const { bookmarks } = state.bookmarkReducer;
+    const bookmarkSet = new Set(bookmarks);
 
-    const filteredList = state.productReducer.filter((product: IProduct) =>
-      bookmarkSet.has(product.id)
+    const filteredList = state.productReducer.products.filter(
+      (product: IProduct) => bookmarkSet.has(product.id)
     );
     return filteredList.slice(0, offset);
   });
@@ -39,9 +40,7 @@ export default Main;
 
 const ListSection = styled.section`
   margin-bottom: 34px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  width: 100%;
   h4 {
     font-size: 24px;
     font-weight: 900;

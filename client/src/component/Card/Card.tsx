@@ -29,7 +29,9 @@ function Card({ product }: { product: IProduct }) {
   } = product;
   const dispatch = useDispatch();
 
-  const bookmarks = useSelector((state: any) => state.bookmarkReducer);
+  const bookmarks = useSelector(
+    (state: any) => state.bookmarkReducer.bookmarks
+  );
   const isBookmark = bookmarks.some((bookmark: number) => bookmark === id);
 
   const handleRemoveBookmark = (itemId: number) => {
