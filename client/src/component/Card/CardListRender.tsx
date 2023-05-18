@@ -2,11 +2,20 @@ import styled from "styled-components";
 import { IProduct } from "types/Product.types";
 import Card from "./Card";
 
-function CardListRender({ products }: { products: IProduct[] }) {
+function CardListRender({
+  products,
+  observeRef,
+}: {
+  products: IProduct[];
+  observeRef?: any;
+}) {
   return (
     <CardListContainer>
-      {products.map((product: IProduct) => (
-        <CardList key={product.id}>
+      {products.map((product: IProduct, i: number) => (
+        <CardList
+          key={product.id}
+          ref={i === products.length - 1 ? observeRef : null}
+        >
           <Card product={product} />
         </CardList>
       ))}
