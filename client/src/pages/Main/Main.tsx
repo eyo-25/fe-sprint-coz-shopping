@@ -3,8 +3,11 @@ import { useSelector } from "react-redux";
 import AppLayout from "component/AppLayout";
 import CardListRender from "component/Card/CardListRender";
 import { IProduct } from "types/Product.types";
+import Modal from "component/Modal/Modal";
+import { useMatch } from "react-router-dom";
 
 function Main() {
+  const modalMatch = useMatch(`/:productId`);
   const offset = 4;
   const productList = useSelector((state: any) =>
     state.productReducer.slice(0, offset)
@@ -38,6 +41,7 @@ function Main() {
           </ListSection>
         )}
       </MainContainer>
+      {modalMatch && <Modal />}
     </AppLayout>
   );
 }

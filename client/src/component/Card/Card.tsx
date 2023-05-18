@@ -13,6 +13,7 @@ import {
   RightAlignText,
 } from "./Card.Style";
 import { IProduct } from "types/Product.types";
+import { Link } from "react-router-dom";
 
 function Card({ product }: { product: IProduct }) {
   const {
@@ -65,7 +66,9 @@ function Card({ product }: { product: IProduct }) {
         ) : (
           <BookmarkOff onClick={() => handleAddBookmark(id)} />
         )}
-        <Image src={getImageSrc()} alt={title ? title : "브랜드 사진"} />
+        <Link to={`/${id}`}>
+          <Image src={getImageSrc()} alt={title ? title : "브랜드 사진"} />
+        </Link>
       </ProcductImg>
       <ProductInfo>
         <ProductTitle>
