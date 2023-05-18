@@ -3,13 +3,39 @@ import { useSelector } from "react-redux";
 import AppLayout from "component/AppLayout";
 import CardListRender from "component/Card/CardListRender";
 import { IProduct } from "types/Product.types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "component/Modal/Modal";
 import { IModalDetail } from "types/Modal.types";
+import { getBookmarks } from "utils/useBookMark";
+import { loadBookmark, loadProducts } from "redux/actions";
+import { fetchProducts } from "api/api";
+import { useDispatch } from "react-redux";
 
 function Main() {
   const [modalDetail, setModalDetail] = useState<IModalDetail | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const productsData = localStorage.getItem("products");
+    const bookmarksData = getBookmarks();
+    if (0 < bookmarksData.length) {
+      dispatch(loadBookmark(bookmarksData));
+    }
+
+    if (productsData !== null) {
+      const parsedProductsData = JSON.parse(productsData);
+      dispatch(loadProducts(parsedProductsData));
+    } else {
+      fetchProducts()
+        .then((data) => {
+          dispatch(loadProducts(data));
+          localStorage.setItem("products", JSON.stringify(data));
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [dispatch]);
 
   const offset = 4;
   const productList = useSelector((state: any) =>
