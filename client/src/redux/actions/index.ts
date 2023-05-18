@@ -37,19 +37,12 @@ export const loadProducts = (productsData: any) => {
   };
 };
 
-export interface NotificationProps {
-  message: string;
-  dismissTime: number;
-  uuid: string;
-  type: string;
-}
-
-export const enqueueNotification = ({
-  message,
-  dismissTime,
-  uuid,
-  type,
-}: NotificationProps) => {
+export const enqueueNotification = (
+  message: string,
+  dismissTime: number,
+  uuid: string,
+  type: string
+) => {
   return {
     type: ENQUEUE_NOTIFICATION,
     payload: { message, dismissTime, uuid, type },

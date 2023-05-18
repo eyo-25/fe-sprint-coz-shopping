@@ -4,16 +4,20 @@ import { useSelector } from "react-redux";
 
 function NotificationBoard() {
   const notificationList = useSelector(
-    (state: any) => state.notificationReducer
+    (state: any) => state.notificationReducer.notifications
   );
 
   return (
     <NotificationContainer>
-      <Toast
-        type={"bookmark"}
-        message={"상품이 북마크에 추가되었습니다"}
-        dismissTime={5000}
-      />
+      {0 < notificationList.length &&
+        notificationList.map((notification: any) => (
+          <Toast
+            key={notification.uuid}
+            type={notification.type}
+            message={notification.message}
+            dismissTime={notification.dismissTime}
+          />
+        ))}
     </NotificationContainer>
   );
 }
