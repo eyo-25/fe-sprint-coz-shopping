@@ -3,11 +3,14 @@ import { useSelector } from "react-redux";
 import AppLayout from "component/AppLayout";
 import CardListRender from "component/Card/CardListRender";
 import { IProduct } from "types/Product.types";
+import { useState } from "react";
 import Modal from "component/Modal/Modal";
-import { useMatch } from "react-router-dom";
+import { IModalDetail } from "types/Modal.types";
 
 function Main() {
-  const modalMatch = useMatch(`/:productId`);
+  const [modalDetail, setModalDetail] = useState<IModalDetail | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const offset = 4;
   const productList = useSelector((state: any) =>
     state.productReducer.slice(0, offset)
@@ -22,21 +25,40 @@ function Main() {
     return filteredList.slice(0, offset);
   });
 
+  const handleModalOpen = (modalDetail: IModalDetail) => {
+    setModalDetail(modalDetail);
+    setIsModalOpen(true);
+  };
+  const handleModalClose = () => {
+    setModalDetail(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <AppLayout>
       <MainContainer>
         <ListSection>
           <h4>상품 리스트</h4>
-          {0 < productList.length && <CardListRender products={productList} />}
+          {0 < productList.length && (
+            <CardListRender
+              products={productList}
+              handleModalOpen={handleModalOpen}
+            />
+          )}
         </ListSection>
         {0 < bookmarkList.length && (
           <ListSection>
             <h4>북마크 리스트</h4>
-            <CardListRender products={bookmarkList} />
+            <CardListRender
+              products={bookmarkList}
+              handleModalOpen={handleModalOpen}
+            />
           </ListSection>
         )}
       </MainContainer>
-      {modalMatch && <Modal />}
+      {modalDetail && isModalOpen && (
+        <Modal modalDetail={modalDetail} handleModalClose={handleModalClose} />
+      )}
     </AppLayout>
   );
 }

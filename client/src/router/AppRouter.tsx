@@ -7,9 +7,7 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={"/"} element={<Main />}>
-          <Route path={"/:productId"} element={<Main />} />
-        </Route>
+        <Route path={"/"} element={<Main />} />
         <Route path={"/productlist"} element={<Productlist />} />
         <Route path={"/bookmark"} element={<Bookmark />} />
       </Routes>
