@@ -13,8 +13,14 @@ import {
   RightAlignText,
 } from "./Card.Style";
 import { IProduct } from "types/Product.types";
+import { IModalDetail } from "types/Modal.types";
 
-function Card({ product }: { product: IProduct }) {
+export interface ICardListRenderProps {
+  product: IProduct;
+  handleModalOpen: (modalDetail: IModalDetail) => void;
+}
+
+function Card({ product, handleModalOpen }: ICardListRenderProps) {
   const {
     type,
     id,
@@ -57,6 +63,12 @@ function Card({ product }: { product: IProduct }) {
     }
   };
 
+  const productDetail = {
+    id: id,
+    title: title ? title : brand_name,
+    image_url: image_url ? image_url : brand_image_url,
+  };
+
   return (
     <CardContainer>
       <ProcductImg>
@@ -65,7 +77,11 @@ function Card({ product }: { product: IProduct }) {
         ) : (
           <BookmarkOff onClick={() => handleAddBookmark(id)} />
         )}
-        <Image src={getImageSrc()} alt={title ? title : "브랜드 사진"} />
+        <Image
+          src={getImageSrc()}
+          alt={title ? title : "브랜드 사진"}
+          onClick={() => handleModalOpen(productDetail)}
+        />
       </ProcductImg>
       <ProductInfo>
         <ProductTitle>
