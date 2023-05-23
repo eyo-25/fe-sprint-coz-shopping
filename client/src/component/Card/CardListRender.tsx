@@ -6,14 +6,21 @@ import { IModalDetail } from "types/Modal.types";
 export interface ICardListRenderProps {
   products: IProduct[];
   handleModalOpen: (modalDetail: IModalDetail) => void;
+  observeRef?: any;
 }
-
-function CardListRender({ products, handleModalOpen }: ICardListRenderProps) {
+        
+function CardListRender({
+  products,
+  observeRef,
+}: ICardListRenderProps) {
   return (
     <CardListContainer>
-      {products.map((product: IProduct) => (
-        <CardList key={product.id}>
-          <Card product={product} handleModalOpen={handleModalOpen} />
+      {products.map((product: IProduct, i: number) => (
+        <CardList
+          key={product.id}
+          ref={i === products.length - 1 ? observeRef : null}
+        >
+          <Card product={product}  handleModalOpen={handleModalOpen}/>
         </CardList>
       ))}
     </CardListContainer>
