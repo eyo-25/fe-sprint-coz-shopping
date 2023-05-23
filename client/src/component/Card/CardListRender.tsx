@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { IProduct } from "types/Product.types";
 import Card from "./Card";
+import { IModalDetail } from "types/Modal.types";
 
+export interface ICardListRenderProps {
+  products: IProduct[];
+  handleModalOpen: (modalDetail: IModalDetail) => void;
+  observeRef?: any;
+}
+        
 function CardListRender({
   products,
   observeRef,
-}: {
-  products: IProduct[];
-  observeRef?: any;
-}) {
+}: ICardListRenderProps) {
   return (
     <CardListContainer>
       {products.map((product: IProduct, i: number) => (
@@ -16,7 +20,7 @@ function CardListRender({
           key={product.id}
           ref={i === products.length - 1 ? observeRef : null}
         >
-          <Card product={product} />
+          <Card product={product}  handleModalOpen={handleModalOpen}/>
         </CardList>
       ))}
     </CardListContainer>

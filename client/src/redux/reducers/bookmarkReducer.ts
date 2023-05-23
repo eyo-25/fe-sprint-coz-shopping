@@ -5,21 +5,31 @@ import {
 } from "redux/actions";
 import { addBookmark, removeBookmark } from "utils/useBookMark";
 
-const initialState: number[] = [];
+const initialState = {
+  bookmarks: [],
+};
 
 const bookmarkReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case LOAD_BOOKMARK:
-      return action.payload.bookmarkData;
+      return {
+        ...state,
+        bookmarks: [...action.payload.bookmarkData],
+      };
     case ADD_TO_BOOKMARK:
       addBookmark(action.payload.itemId);
-      return [...state, action.payload.itemId];
+      return {
+        ...state,
+        bookmarks: [...state.bookmarks, action.payload.itemId],
+      };
     case REMOVE_FROM_BOOKMARK:
       removeBookmark(action.payload.itemId);
-      const filteredBookmarks = state.filter(
-        (bookmark) => bookmark !== action.payload.itemId
-      );
-      return filteredBookmarks;
+      return {
+        ...state,
+        bookmarks: state.bookmarks.filter(
+          (bookmark) => bookmark !== action.payload.itemId
+        ),
+      };
     default:
       return state;
   }
