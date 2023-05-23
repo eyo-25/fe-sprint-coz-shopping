@@ -2,7 +2,12 @@ import { useSelector } from "react-redux";
 import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
 import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
 import { useDispatch } from "react-redux";
-import { addToBookmark, removeFromBookmark } from "redux/actions";
+import {
+  addToBookmark,
+  dequeueNotification,
+  enqueueNotification,
+  removeFromBookmark,
+} from "redux/actions";
 import {
   CardContainer,
   Image,
@@ -13,6 +18,7 @@ import {
   RightAlignText,
 } from "./Card.Style";
 import { IProduct } from "types/Product.types";
+import { v4 as uuidv4 } from "uuid";
 import { IModalDetail } from "types/Modal.types";
 
 export interface ICardListRenderProps {
@@ -35,14 +41,27 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
   } = product;
   const dispatch = useDispatch();
 
-  const bookmarks = useSelector((state: any) => state.bookmarkReducer);
+  const bookmarks = useSelector(
+    (state: any) => state.bookmarkReducer.bookmarks
+  );
   const isBookmark = bookmarks.some((bookmark: number) => bookmark === id);
+
+  const notify = (message: string, dismissTime: number, type: string) => {
+    const uuid = uuidv4();
+
+    dispatch(enqueueNotification(message, dismissTime, uuid, type));
+    setTimeout(() => {
+      dispatch(dequeueNotification());
+    }, dismissTime);
+  };
 
   const handleRemoveBookmark = (itemId: number) => {
     dispatch(removeFromBookmark(itemId));
+    notify("상품이 북마크에서 제거되었습니다", 3000, "removeBookmark");
   };
   const handleAddBookmark = (itemId: number) => {
     dispatch(addToBookmark(itemId));
+    notify("상품이 북마크에 추가되었습니다", 3000, "addBookmark");
   };
 
   const getImageSrc = () => {
