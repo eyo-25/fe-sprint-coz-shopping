@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import { IProduct } from "types/Product.types";
 import Card from "./Card";
+import { IModalDetail } from "types/Modal.types";
 
-function CardListRender({ products }: { products: IProduct[] }) {
+export interface ICardListRenderProps {
+  products: IProduct[];
+  handleModalOpen: (modalDetail: IModalDetail) => void;
+}
+
+function CardListRender({ products, handleModalOpen }: ICardListRenderProps) {
   return (
     <CardListContainer>
       {products.map((product: IProduct) => (
         <CardList key={product.id}>
-          <Card product={product} />
+          <Card product={product} handleModalOpen={handleModalOpen} />
         </CardList>
       ))}
     </CardListContainer>
