@@ -34,7 +34,7 @@ function Modal({ modalDetail, handleModalClose }: IModalProps) {
   };
 
   const isBookmark = useSelector((state: any) => {
-    const bookmarkSet = new Set(state.bookmarkReducer);
+    const bookmarkSet = new Set(state.bookmarkReducer.bookmarks);
     return bookmarkSet.has(id) ? true : false;
   });
 

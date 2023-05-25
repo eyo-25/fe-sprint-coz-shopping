@@ -14,7 +14,6 @@ function Toast({ type, message, dismissTime }: IToastProps) {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    //클로져 적용
     let mounted = true;
     setTimeout(() => {
       if (mounted) {
@@ -22,7 +21,6 @@ function Toast({ type, message, dismissTime }: IToastProps) {
       }
     }, dismissTime - 500);
 
-    //클린업
     return () => {
       mounted = false;
     };
