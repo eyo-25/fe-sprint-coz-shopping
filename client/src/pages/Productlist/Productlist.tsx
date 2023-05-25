@@ -2,7 +2,7 @@ import AppLayout from "component/AppLayout";
 import CardListRender from "component/Card/CardListRender";
 import FilterList from "component/FilterList/FilterList";
 import Modal from "component/Modal/Modal";
-import { useState, useRef, useEffect, useSelector } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { IModalDetail } from "types/Modal.types";
 import styled from "styled-components";
@@ -34,7 +34,6 @@ function Productlist() {
     setPage(0);
   };
 
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,7 +54,7 @@ function Productlist() {
       }
     };
   }, [page]);
-  
+
   const handleModalOpen = (modalDetail: IModalDetail) => {
     setModalDetail(modalDetail);
     setIsModalOpen(true);
@@ -71,23 +70,16 @@ function Productlist() {
         selectedType={selectedType}
         handleFilterSelected={handleFilterSelected}
       />
-      <ObserveWrapper>
-        <CardListRender
-          products={productList.slice(0, 16 + page * 8)}
-          observeRef={observeRef}
-          handleModalOpen={handleModalOpen}
-        />
-        {modalDetail && isModalOpen && (
-          <Modal modalDetail={modalDetail} handleModalClose={handleModalClose} />
-        )}
-      </ObserveWrapper>
+      <CardListRender
+        products={productList.slice(0, 16 + page * 8)}
+        observeRef={observeRef}
+        handleModalOpen={handleModalOpen}
+      />
+      {modalDetail && isModalOpen && (
+        <Modal modalDetail={modalDetail} handleModalClose={handleModalClose} />
+      )}
     </AppLayout>
   );
 }
 
 export default Productlist;
-
-const ObserveWrapper = styled.div`
-  display: flex;
-  position: relative;
-`;

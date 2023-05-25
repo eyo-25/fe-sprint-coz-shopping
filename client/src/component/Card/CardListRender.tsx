@@ -8,10 +8,11 @@ export interface ICardListRenderProps {
   handleModalOpen: (modalDetail: IModalDetail) => void;
   observeRef?: any;
 }
-        
+
 function CardListRender({
   products,
   observeRef,
+  handleModalOpen,
 }: ICardListRenderProps) {
   return (
     <CardListContainer>
@@ -20,7 +21,7 @@ function CardListRender({
           key={product.id}
           ref={i === products.length - 1 ? observeRef : null}
         >
-          <Card product={product}  handleModalOpen={handleModalOpen}/>
+          <Card product={product} handleModalOpen={handleModalOpen} />
         </CardList>
       ))}
     </CardListContainer>

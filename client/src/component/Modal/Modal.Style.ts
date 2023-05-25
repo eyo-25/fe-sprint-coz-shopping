@@ -28,10 +28,18 @@ export const ModalContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
 `;
-export const ModalImage = styled.img<{ src: string }>`
+export const ModalImage = styled.div<{ src: string }>`
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.src}) 100% / cover no-repeat;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      80%,
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
 `;
 export const ClosedIcon = styled(ClosedIconSvg)`
   position: absolute;

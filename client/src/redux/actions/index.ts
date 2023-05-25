@@ -4,6 +4,7 @@ export const REMOVE_FROM_BOOKMARK = "REMOVE_FROM_BOOKMARK";
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 export const ENQUEUE_NOTIFICATION = "ENQUEUE_NOTIFICATION";
 export const DEQUEUE_NOTIFICATION = "DEQUEUE_NOTIFICATION";
+export const IS_MODAL_OPEN = "IS_MODAL_OPEN";
 
 export const loadBookmark = (bookmarkData: number[]) => {
   return {
@@ -52,5 +53,11 @@ export const enqueueNotification = (
 export const dequeueNotification = () => {
   return {
     type: DEQUEUE_NOTIFICATION,
+  };
+};
+
+export const isModalOpen = () => {
+  return {
+    type: IS_MODAL_OPEN,
   };
 };
