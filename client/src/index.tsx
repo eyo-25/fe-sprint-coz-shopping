@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from "react-redux";
-import "./styles/reset.css";
+import "common/styles/reset.css";
 import store from "redux/store/store";
 
 const root = ReactDOM.createRoot(

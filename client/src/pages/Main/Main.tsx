@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import AppLayout from "component/AppLayout";
-import CardListRender from "component/Card/CardListRender";
-import { IProduct } from "types/Product.types";
+import { IProduct } from "common/types/Product.types";
 import { useEffect, useState } from "react";
-import Modal from "component/Modal/Modal";
-import { IModalDetail } from "types/Modal.types";
-import { getBookmarks } from "utils/useBookMark";
+import { IModalDetail } from "common/types/Modal.types";
+import { getBookmarks } from "common/utils/useBookMark";
 import { loadBookmark, loadProducts } from "redux/actions";
-import { fetchProducts } from "api/api";
 import { useDispatch } from "react-redux";
+import { fetchProducts } from "common/api/api";
+import AppLayout from "common/component/AppLayout";
+import CardListRender from "common/component/Card/CardListRender";
+import Modal from "common/component/Modal/Modal";
 
 function Main() {
   const [modalDetail, setModalDetail] = useState<IModalDetail | null>(null);

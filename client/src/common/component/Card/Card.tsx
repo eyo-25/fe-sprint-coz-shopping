@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux";
-import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
-import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { ReactComponent as BookmarkOff } from "common/assets/icons/bookmarkOff.svg";
+import { ReactComponent as BookmarkOn } from "common/assets/icons/bookmarkOn.svg";
 import {
   addToBookmark,
   dequeueNotification,
@@ -17,9 +16,9 @@ import {
   PurpleText,
   RightAlignText,
 } from "./Card.Style";
-import { IProduct } from "types/Product.types";
+import { IProduct } from "common/types/Product.types";
 import { v4 as uuidv4 } from "uuid";
-import { IModalDetail } from "types/Modal.types";
+import { IModalDetail } from "common/types/Modal.types";
 
 export interface ICardListRenderProps {
   product: IProduct;

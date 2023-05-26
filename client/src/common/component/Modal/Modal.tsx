@@ -1,11 +1,11 @@
-import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
-import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
+import { ReactComponent as BookmarkOff } from "common/assets/icons/bookmarkOff.svg";
+import { ReactComponent as BookmarkOn } from "common/assets/icons/bookmarkOn.svg";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
-import useOnClickOutside from "hooks/useOnClickOutside";
+import useOnClickOutside from "common/hooks/useOnClickOutside";
 import { useDispatch } from "react-redux";
 import { addToBookmark, removeFromBookmark } from "redux/actions";
-import { IModalDetail } from "types/Modal.types";
+import { IModalDetail } from "common/types/Modal.types";
 import {
   Background,
   ClosedIcon,

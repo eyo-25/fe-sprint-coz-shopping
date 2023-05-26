@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ReactComponent as ProuctIcon } from "assets/producticon.svg";
-import { ReactComponent as BookmarkIcon } from "assets/bookmarkicon.svg";
+import { ReactComponent as ProuctIcon } from "common/assets/producticon.svg";
+import { ReactComponent as BookmarkIcon } from "common/assets/bookmarkicon.svg";
 import { Link } from "react-router-dom";
-import useOnClickOutside from "hooks/useOnClickOutside";
+import useOnClickOutside from "common/hooks/useOnClickOutside";
 
 interface IHamMenuProps {
   setHamMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;

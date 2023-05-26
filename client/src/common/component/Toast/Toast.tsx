@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { ReactComponent as BookmarkOff } from "assets/icons/bookmarkOff.svg";
-import { ReactComponent as BookmarkOn } from "assets/icons/bookmarkOn.svg";
+import { ReactComponent as BookmarkOff } from "common/assets/icons/bookmarkOff.svg";
+import { ReactComponent as BookmarkOn } from "common/assets/icons/bookmarkOn.svg";
 import styled from "styled-components";
 
 interface IToastProps {

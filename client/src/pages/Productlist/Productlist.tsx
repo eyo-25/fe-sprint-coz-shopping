@@ -1,12 +1,11 @@
-import AppLayout from "component/AppLayout";
-import CardListRender from "component/Card/CardListRender";
-import FilterList from "component/FilterList/FilterList";
-import Modal from "component/Modal/Modal";
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { IModalDetail } from "types/Modal.types";
-import styled from "styled-components";
-import { IProduct } from "types/Product.types";
+import { IModalDetail } from "common/types/Modal.types";
+import { IProduct } from "common/types/Product.types";
+import AppLayout from "common/component/AppLayout";
+import FilterList from "common/component/FilterList/FilterList";
+import CardListRender from "common/component/Card/CardListRender";
+import Modal from "common/component/Modal/Modal";
 
 function Productlist() {
   const [modalDetail, setModalDetail] = useState<IModalDetail | null>(null);

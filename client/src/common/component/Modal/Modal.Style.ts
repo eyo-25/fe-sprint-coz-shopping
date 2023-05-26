@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as ClosedIconSvg } from "assets/icons/closedicon.svg";
+import { ReactComponent as ClosedIconSvg } from "common/assets/icons/closedicon.svg";
 
 export const ModalWrapper = styled.div`
   display: flex;

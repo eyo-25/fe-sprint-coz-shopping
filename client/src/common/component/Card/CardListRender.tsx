@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { IProduct } from "types/Product.types";
+import { IProduct } from "common/types/Product.types";
 import Card from "./Card";
-import { IModalDetail } from "types/Modal.types";
+import { IModalDetail } from "common/types/Modal.types";
 
 export interface ICardListRenderProps {
   products: IProduct[];

@@ -1,8 +1,8 @@
-import totalImage from "assets/categories/total.png";
-import poductImage from "assets/categories/poduct.png";
-import categoryImage from "assets/categories/category.png";
-import exhibitionImage from "assets/categories/exhibition.png";
-import brandImage from "assets/categories/brand.png";
+import totalImage from "common/assets/categories/total.png";
+import poductImage from "common/assets/categories/poduct.png";
+import categoryImage from "common/assets/categories/category.png";
+import exhibitionImage from "common/assets/categories/exhibition.png";
+import brandImage from "common/assets/categories/brand.png";
 
 export const filterOptions = [
   {

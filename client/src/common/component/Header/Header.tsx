@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
-import { ReactComponent as LogoImg } from "assets/logo.svg";
-import { ReactComponent as HamIcon } from "assets/hamIcon.svg";
+import { ReactComponent as LogoImg } from "common/assets/logo.svg";
+import { ReactComponent as HamIcon } from "common/assets/hamIcon.svg";
 import HamMenu from "./HamMenu";
 
 function Header() {
