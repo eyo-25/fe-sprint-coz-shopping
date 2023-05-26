@@ -1,12 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
-import { ReactComponent as BookmarkOff } from "common/assets/icons/bookmarkOff.svg";
-import { ReactComponent as BookmarkOn } from "common/assets/icons/bookmarkOn.svg";
-import {
-  addToBookmark,
-  dequeueNotification,
-  enqueueNotification,
-  removeFromBookmark,
-} from "redux/actions";
+import { useSelector } from "react-redux";
 import {
   CardContainer,
   Image,
@@ -17,10 +9,16 @@ import {
   RightAlignText,
 } from "./Card.Style";
 import { IProduct } from "common/types/Product.types";
-import { v4 as uuidv4 } from "uuid";
 import { IModalDetail } from "common/types/Modal.types";
+import {
+  BRAND,
+  CATEGORY,
+  EXHIBITION,
+  PRODUCT,
+} from "common/constants/constants";
+import { Bookmark } from "../Bookmark/Bookmark";
 
-export interface ICardListRenderProps {
+interface ICardListRenderProps {
   product: IProduct;
   handleModalOpen: (modalDetail: IModalDetail) => void;
 }
@@ -38,33 +36,14 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
     sub_title,
     brand_image_url,
   } = product;
-  const dispatch = useDispatch();
 
   const bookmarks = useSelector(
     (state: any) => state.bookmarkReducer.bookmarks
   );
   const isBookmark = bookmarks.some((bookmark: number) => bookmark === id);
 
-  const notify = (message: string, dismissTime: number, type: string) => {
-    const uuid = uuidv4();
-
-    dispatch(enqueueNotification(message, dismissTime, uuid, type));
-    setTimeout(() => {
-      dispatch(dequeueNotification());
-    }, dismissTime);
-  };
-
-  const handleRemoveBookmark = (itemId: number) => {
-    dispatch(removeFromBookmark(itemId));
-    notify("상품이 북마크에서 제거되었습니다", 3000, "removeBookmark");
-  };
-  const handleAddBookmark = (itemId: number) => {
-    dispatch(addToBookmark(itemId));
-    notify("상품이 북마크에 추가되었습니다", 3000, "addBookmark");
-  };
-
   const getImageSrc = () => {
-    if (type === "Brand") {
+    if (type === BRAND) {
       return brand_image_url || "";
     } else {
       return image_url || "";
@@ -72,9 +51,9 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
   };
 
   const getProductTitle = () => {
-    if (type === "Brand") {
+    if (type === BRAND) {
       return <strong>{brand_name}</strong>;
-    } else if (type === "Category") {
+    } else if (type === CATEGORY) {
       return <strong># {title}</strong>;
     } else {
       return <strong>{title}</strong>;
@@ -90,11 +69,7 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
   return (
     <CardContainer>
       <ProcductImg>
-        {isBookmark ? (
-          <BookmarkOn onClick={() => handleRemoveBookmark(id)} />
-        ) : (
-          <BookmarkOff onClick={() => handleAddBookmark(id)} />
-        )}
+        <Bookmark bookmarkStatus={isBookmark} id={id} />
         <Image
           src={getImageSrc()}
           alt={title ? title : "브랜드 사진"}
@@ -104,22 +79,20 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
       <ProductInfo>
         <ProductTitle>
           {getProductTitle()}
-          {type === "Product" && (
-            <PurpleText>${discountPercentage}%</PurpleText>
-          )}
-          {type === "Brand" && <strong>관심고객수</strong>}
+          {type === PRODUCT && <PurpleText>${discountPercentage}%</PurpleText>}
+          {type === BRAND && <strong>관심고객수</strong>}
         </ProductTitle>
-        {type === "Product" && (
+        {type === PRODUCT && (
           <RightAlignText>
             {price && Number(price).toLocaleString()}원
           </RightAlignText>
         )}
-        {type === "Brand" && (
+        {type === BRAND && (
           <RightAlignText>
             {follower && follower.toLocaleString()}
           </RightAlignText>
         )}
-        {type === "Exhibition" && <p>{sub_title}</p>}
+        {type === EXHIBITION && <p>{sub_title}</p>}
       </ProductInfo>
     </CardContainer>
   );
