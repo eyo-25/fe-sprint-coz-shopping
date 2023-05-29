@@ -3,7 +3,7 @@ import {
   LOAD_BOOKMARK,
   REMOVE_FROM_BOOKMARK,
 } from "redux/actions";
-import { addBookmark, removeBookmark } from "utils/useBookMark";
+import { addBookmark, removeBookmark } from "common/utils/useBookMark";
 
 const initialState = {
   bookmarks: [],
