@@ -15,6 +15,7 @@ import {
   ModalTitleContainer,
   ModalWrapper,
 } from "./Modal.Style";
+import { Bookmark } from "../Bookmark/Bookmark";
 
 export interface IModalProps {
   modalDetail: IModalDetail;
@@ -23,15 +24,7 @@ export interface IModalProps {
 
 function Modal({ modalDetail, handleModalClose }: IModalProps) {
   const { title, id, image_url } = modalDetail;
-  const dispatch = useDispatch();
   const modalRef = useRef(null);
-
-  const handleRemoveBookmark = (itemId: number) => {
-    dispatch(removeFromBookmark(itemId));
-  };
-  const handleAddBookmark = (itemId: number) => {
-    dispatch(addToBookmark(itemId));
-  };
 
   const isBookmark = useSelector((state: any) => {
     const bookmarkSet = new Set(state.bookmarkReducer.bookmarks);
@@ -44,11 +37,7 @@ function Modal({ modalDetail, handleModalClose }: IModalProps) {
     <ModalWrapper>
       <ModalContainer ref={modalRef}>
         <ModalTitleContainer>
-          {isBookmark ? (
-            <BookmarkOn onClick={() => handleRemoveBookmark(id)} />
-          ) : (
-            <BookmarkOff onClick={() => handleAddBookmark(id)} />
-          )}
+          <Bookmark bookmarkStatus={isBookmark} id={id} />
           <ModalText>{title}</ModalText>
         </ModalTitleContainer>
         <ClosedIcon onClick={handleModalClose} />

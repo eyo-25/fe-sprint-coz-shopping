@@ -24,7 +24,7 @@ function HamMenu({ setHamMenuOpen, hamMenuRef }: IHamMenuProps) {
         </Link>
       </NavMenu>
       <NavMenu>
-        <Link to="/bookmark">
+        <Link to="/Bookmarklist">
           <BookmarkIcon />
           <p>북마크 페이지</p>
         </Link>

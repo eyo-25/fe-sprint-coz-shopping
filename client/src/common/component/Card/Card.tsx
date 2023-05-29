@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   CardContainer,
@@ -40,6 +41,7 @@ function Card({ product, handleModalOpen }: ICardListRenderProps) {
   const bookmarks = useSelector(
     (state: any) => state.bookmarkReducer.bookmarks
   );
+
   const isBookmark = bookmarks.some((bookmark: number) => bookmark === id);
 
   const getImageSrc = () => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   addToBookmark,
@@ -21,6 +21,10 @@ export const Bookmark = ({ bookmarkStatus, id }: IBookmarkProps) => {
   const [isBookmark, setIsBookmark] = useState(bookmarkStatus);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setIsBookmark(bookmarkStatus);
+  }, [bookmarkStatus]);
+
   const notify = (message: string, dismissTime: number = 300, type: string) => {
     const uuid = uuidv4();
     dispatch(enqueueNotification(message, dismissTime, uuid, type));
@@ -32,13 +36,13 @@ export const Bookmark = ({ bookmarkStatus, id }: IBookmarkProps) => {
   const handleRemoveBookmark = (itemId: number) => {
     setIsBookmark(false);
     dispatch(removeFromBookmark(itemId));
-    notify(BOOKMARK_ON_MSG, 3000, REMOVE_BOOKMARK);
+    notify(BOOKMARK_OFF_MSG, 3000, REMOVE_BOOKMARK);
   };
 
   const handleAddBookmark = (itemId: number) => {
     setIsBookmark(true);
     dispatch(addToBookmark(itemId));
-    notify(BOOKMARK_OFF_MSG, 3000, ADD_BOOKMARK);
+    notify(BOOKMARK_ON_MSG, 3000, ADD_BOOKMARK);
   };
 
   return (

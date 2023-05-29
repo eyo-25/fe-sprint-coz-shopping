@@ -7,7 +7,7 @@ import FilterList from "common/component/FilterList/FilterList";
 import CardListRender from "common/component/Card/CardListRender";
 import Modal from "common/component/Modal/Modal";
 
-function Productlist() {
+function BookmarkList() {
   const [selectedType, setSelectedType] = useState("Total");
   const [modalDetail, setModalDetail] = useState<IModalDetail | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,4 +56,4 @@ function Productlist() {
   );
 }
 
-export default Productlist;
+export default BookmarkList;
